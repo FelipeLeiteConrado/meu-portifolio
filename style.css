@@ -161,6 +161,25 @@ body {
 	filter: invert(1) brightness(2);
 }
 
+/* Make sure external SVG images used as <img> look correct in both themes
+   - default: no filter (use original artwork)
+   - dark theme: invert and brighten so monochrome icons become visible
+   Targets: search button, contact links, CV button and theme icon */
+.search-icon img,
+.contact-link img,
+.btn-cv img,
+.theme-icon {
+    filter: none;
+    transition: filter var(--theme-duration) var(--theme-ease);
+}
+
+[data-theme="dark"] .search-icon img,
+[data-theme="dark"] .contact-link img,
+[data-theme="dark"] .btn-cv img,
+[data-theme="dark"] .theme-icon {
+    filter: invert(1) brightness(2);
+}
+
 .location {
 	display: flex;
 	gap: 0.5rem;
@@ -246,7 +265,7 @@ body {
 .main-content h3 {
 	font-family: var(--font-heading);
 	font-weight: 700;
-	color: #1a1a1a;
+	color: var(--text-heading);
 	margin-top: 2rem;
 	margin-bottom: 1rem;
 }
@@ -268,7 +287,7 @@ body {
 
 .main-content p {
 	margin-bottom: 1.5rem;
-	color: #333;
+	color: var(--text-body);
 }
 
 .tab-section {
@@ -464,64 +483,227 @@ body {
 .btn-cv svg { vertical-align: middle; }
 
 .contact-section {
-	padding: 0.5rem 0;
+    padding: 2rem 0;
+}
+
+.contact-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.contact-info {
+    text-align: center;
+    padding: 1rem;
+}
+
+.contact-info h2 {
+    margin-top: 0;
+    color: var(--text-heading);
+}
+
+.contact-text {
+    font-size: 1.25rem;
+    color: var(--text-body);
+    margin: 1rem 0 2rem;
+    line-height: 1.5;
+}
+
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: center;
+}
+
+.contact-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--text-secondary);
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border-radius: 8px;
+    transition: all var(--theme-duration) var(--theme-ease);
+    width: 100%;
+    max-width: 320px;
+    justify-content: flex-start;
+}
+
+.contact-link:hover {
+    color: var(--text-primary);
+    background: var(--hover-background);
+    transform: translateY(-2px);
+}
+
+.contact-link svg {
+    color: inherit;
+    flex-shrink: 0;
 }
 
 .contact-form {
-	display: flex;
-	flex-direction: column;
-	gap: 0.75rem;
-	max-width: 520px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--bg-main);
+    padding: 2rem;
+    border-radius: 12px;
+    border: var(--border-width) solid var(--border-color);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.form-group label {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    font-weight: 500;
+    display: block;
 }
 
 .contact-form input,
 .contact-form textarea {
-	width: 100%;
-	padding: 0.6rem;
-	border-radius: 8px;
-	border: var(--border-width) solid var(--border-color);
-	background: var(--bg-main);
-	color: var(--text-primary);
-	outline: none;
-	font-family: var(--font-body);
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: var(--border-width) solid var(--border-color);
+    background: var(--bg-content);
+    color: var(--text-primary);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all var(--theme-duration) var(--theme-ease);
 }
 
-.contact-form textarea { resize: vertical; min-height: 96px; }
-
-.contact-actions {
-	display: flex;
-	gap: 0.75rem;
-	align-items: center;
-	justify-content: space-between;
+.contact-form input:hover,
+.contact-form textarea:hover {
+    border-color: var(--text-secondary);
+    background: var(--bg-main);
 }
 
-.contact-status { margin: 0; color: var(--text-secondary); font-size: 0.95rem; }
-
-.send-icon {
-	display: inline-flex;
-	align-items: center;
-	gap: 0.5rem;
-	padding: 0.5rem 0.9rem;
-	border-radius: 8px;
-	background: var(--accent);
-	color: hsl(0,0%,10%);
-	border: none;
-	cursor: pointer;
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    background: var(--bg-main);
 }
 
-.send-icon svg { display: inline-block; }
+.contact-form textarea {
+    resize: vertical;
+    min-height: 150px;
+    line-height: 1.6;
+}
 
-.contact-links.small { margin-top: 1rem; display: flex; gap: 0.75rem; flex-wrap: wrap; }
-.contact-links.small a { color: var(--text-secondary); font-size: 0.95rem; }
+.form-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: var(--border-width) solid var(--border-color);
+}
 
-/* Larger screens: center header content and increase padding */
+.form-status {
+    margin: 0;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.btn-send {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.75rem;
+    background: var(--accent);
+    color: hsl(0,0%,10%);
+    border: none;
+    border-radius: 8px;
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s ease;
+}
+
+.btn-send:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}
+
+.btn-send svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-send:hover svg {
+    transform: translateX(4px);
+}
+
+/* Desktop Adjustments */
 @media (min-width: 800px) {
-	.nav-tabs { justify-content: center; overflow: visible; padding: 0; }
-	.header { padding: 0.75rem 1.5rem; }
-	.contact-form { flex-direction: row; gap: 1rem; align-items: flex-start; }
-	.contact-form > label { display: none; }
-	.contact-form input, .contact-form textarea { flex: 1; }
-	.contact-actions { flex-direction: column; align-items: flex-end; }
+    .nav-tabs {
+        justify-content: center;
+        overflow: visible;
+        padding: 0;
+        gap: 2rem;
+    }
+    
+    .header {
+        padding: 0.75rem 1.5rem;
+    }
+    
+    .contact-wrapper {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 4rem;
+        justify-content: center;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    
+    .contact-info {
+        flex: 0 0 300px;
+        text-align: left;
+        position: sticky;
+        top: 6rem;
+    }
+    
+    .contact-form {
+        flex: 0 0 500px;
+        margin-top: 0;
+        padding: 2.5rem;
+    }
+    
+    .contact-links {
+        align-items: flex-start;
+    }
+    
+    .contact-link {
+        max-width: none;
+        width: auto;
+        padding: 0.75rem 1.25rem;
+    }
+    
+    .contact-text {
+        max-width: 32ch;
+    }
+    
+    .form-footer {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+    }
+    
+    .form-group {
+        gap: 0.875rem;
+    }
 }
 
 .skill-card {

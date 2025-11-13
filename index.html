@@ -30,11 +30,7 @@
                     <h2 class="subtitle">Desenvolvedor</h2>
                     <p class="about-text">Estudante de Análise e Desenvolvimento de Sistemas, apaixonado por tecnologia e inovação. Sempre em busca de desafios, aprendo rápido e entrego resultados — estou pronto para transformar ideias em soluções de impacto.</p>
                     <a class="btn-cv" href="#" role="button">
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="margin-right:8px;vertical-align:middle;">
-                            <path d="M12 3V15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M5 10L12 17L19 10" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                            <path d="M21 21H3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
+                        <img src="assets/8666778_download_down_save_icon.svg" alt="Baixar currículo" width="16" height="16" style="margin-right:8px;vertical-align:middle;" />
                         Baixar Currículo
                     </a>
 
@@ -66,7 +62,7 @@
                             <h3>Análise e Desenvolvimento de Sistemas</h3>
                             <p class="institution">FATEC Sorocaba</p>
                             <p class="period">2025 - Presente</p>
-                            <p class="description">Curso superior focado em desenvolvimento de software, análise de sistemas e soluções tecnológicas.</p>
+                            <p class="description">Curso superior focado em desenvolvimento de software, análise de sistemas e soluções tecnológicas.E</p>
                         </div>
                         
                         <div class="education-entry">
@@ -91,10 +87,8 @@
                         <div class="skills-search-container">
                             <div class="search-bar">
                                 <input type="text" id="skillSearch" placeholder="Buscar habilidade...">
-                                <button class="search-icon">
-                                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M21 21L15 15M17 10C17 13.866 13.866 17 10 17C6.13401 17 3 13.866 3 10C3 6.13401 6.13401 3 10 3C13.866 3 17 6.13401 17 10Z" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                                    </svg>
+                                <button class="search-icon" aria-label="Buscar habilidades">
+                                        <img src="assets/8666693_search_icon.svg" alt="Buscar" class="icon search-icon-img" width="20" height="20" />
                                 </button>
                             </div>
                         </div>
@@ -161,6 +155,10 @@
                             <h4>Linux</h4>
                             <div class="skill-level" data-level="70"></div>
                         </div>
+                        <div class="skill-card" data-categories="backend,languages">
+                            <h4>Java</h4>
+                            <div class="skill-level" data-level="70"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -173,37 +171,53 @@
         </section>
         <section id="tab-contato" class="tab-section">
             <div class="contact-section">
-                <h2>Contato</h2>
-                <form id="contactForm" class="contact-form" novalidate>
-                    <label for="contactName">Nome</label>
-                    <input id="contactName" name="name" type="text" required />
-
-                    <label for="contactEmail">Email</label>
-                    <input id="contactEmail" name="email" type="email" required />
-
-                    <label for="contactMessage">Mensagem</label>
-                    <textarea id="contactMessage" name="message" rows="4" required></textarea>
-
-                    <!-- honeypot to reduce spam -->
-                    <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" style="display:none" />
-
-                    <div class="contact-actions">
-                        <p id="formStatus" class="contact-status" aria-live="polite"></p>
-                        <button type="submit" class="search-icon send-icon" aria-label="Enviar mensagem">
-                            <!-- simple paper-plane SVG as send icon -->
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                                <path d="M22 2L11 13" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                            </svg>
-                            <span class="btn-text">Enviar</span>
-                        </button>
+                <div class="contact-wrapper">
+                    <div class="contact-info">
+                        <h2>Contato</h2>
+                        <p class="contact-text">Vamos conversar? Entre em contato comigo por aqui.</p>
+                        <div class="contact-links">
+                            <a href="mailto:felipe.leite.conrado@example.com" class="contact-link">
+                                <img src="assets/8666723_mail_icon.svg" alt="Email" width="20" height="20" />
+                                felipe.leite.conrado@example.com
+                            </a>
+                            <a href="https://www.linkedin.com/in/felipe-leite-conrado" target="_blank" rel="noopener" class="contact-link">
+                                <img src="assets/8666770_linkedin_social_icon.svg" alt="LinkedIn" width="20" height="20" />
+                                LinkedIn
+                            </a>
+                            <a href="https://github.com/FelipeLeiteConrado" target="_blank" rel="noopener" class="contact-link">
+                                <img src="assets/8666686_github_icon.svg" alt="GitHub" width="20" height="20" />
+                                GitHub
+                            </a>
+                        </div>
                     </div>
-                </form>
 
-                <div class="contact-links small">
-                    <a href="mailto:felipe.leite.conrado@example.com">felipe.leite.conrado@example.com</a>
-                    <a href="https://www.linkedin.com/in/felipe-leite-conrado" target="_blank" rel="noopener">LinkedIn</a>
-                    <a href="https://github.com/FelipeLeiteConrado" target="_blank" rel="noopener">GitHub</a>
+                    <form id="contactForm" class="contact-form" novalidate>
+                        <div class="form-group">
+                            <label for="contactName">Nome</label>
+                            <input id="contactName" name="name" type="text" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactEmail">Email</label>
+                            <input id="contactEmail" name="email" type="email" required />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="contactMessage">Mensagem</label>
+                            <textarea id="contactMessage" name="message" rows="4" required></textarea>
+                        </div>
+
+                        <!-- honeypot to reduce spam -->
+                        <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" style="display:none" />
+
+                        <div class="form-footer">
+                            <p id="formStatus" class="form-status" aria-live="polite"></p>
+                            <button type="submit" class="btn-send" aria-label="Enviar mensagem">
+                                <span>Enviar</span>
+                                <img src="assets/8666777_chevron_right_arrow_icon.svg" alt="Enviar" width="18" height="18" aria-hidden="true" />
+                            </button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </section>
